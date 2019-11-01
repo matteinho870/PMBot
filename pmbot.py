@@ -1,7 +1,7 @@
 import telethon
 import logging
 logging.basicConfig(level=logging.WARNING)
-logger = logging.getlogger(__name__)
+logger = logging.getLogger(__name__)
 from config import API_ID, API_HASH
 
 client = telethon.TelegramClient("pmbot", API_ID, API_HASH)
