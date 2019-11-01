@@ -2,6 +2,7 @@ import telethon
 from config import API_ID, API_HASH
 
 client = telethon.TelegramClient("pmbot", API_ID, API_HASH)
+memory = {}
 
 @client.on(telethon.events.New.Message(incoming=True, func=lambda e: e.is_private))
 async def start(event):
@@ -11,8 +12,15 @@ async def start(event):
         return
     if event.from_id == me.id:
         return
-    await event.reply("""""")
-    await event.reply("""""")
+    if event.from_id in memory:
+        if memory[event.from_id] >= 1 and memory[event.from_id] <= 5:
+            await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
+        else:
+            await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
+            await client(telethon.functions.contacts.BlockRequest(id=event.from_id))
+    else:
+        await event.reply("""Non spammare, il mio capo presto ti risponderà. Attendi fino alla sua risposta.""")
+        memory[event.from_id] = 1
 
 @client.on(telethon.events.NewMessage(pattern=r"\.off", outgoing=True))
 async def shutdown(event):
