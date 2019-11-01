@@ -13,11 +13,7 @@ async def start(event):
     if event.from_id == me.id:
         return
     if event.from_id in memory:
-        if memory[event.from_id] >= 1 and memory[event.from_id] <= 5:
-            await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
-        else:
-            await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
-            await client(telethon.functions.contacts.BlockRequest(id=event.from_id))
+        await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
     else:
         await event.reply("""Non spammare, il mio capo presto ti risponderà. Attendi fino alla sua risposta.""")
         memory[event.from_id] = 1
