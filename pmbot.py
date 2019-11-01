@@ -12,8 +12,6 @@ memory = {}
 async def start(event):
     sender = await event.get_sender()
     me = await client.get_me()
-    if sender.is_bot:
-        return
     if event.from_id == me.id:
         return
     if event.from_id in memory:
