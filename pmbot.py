@@ -4,7 +4,7 @@ from config import API_ID, API_HASH
 client = telethon.TelegramClient("pmbot", API_ID, API_HASH)
 memory = {}
 
-@client.on(telethon.events.New.Message(incoming=True, func=lambda e: e.is_private))
+@client.on(telethon.events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def start(event):
     sender = await event.get_sender()
     me = await client.get_me()
