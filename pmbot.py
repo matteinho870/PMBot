@@ -27,3 +27,4 @@ async def shutdown(event):
 async def shutdown(event):
     client.add_event_handler(start, telethon.events.New.Message(incoming=True, func=lambda e: e.is_private))
     await event.edit("PM Bot switched on...")
+client.run_until_disconnected()
