@@ -2,6 +2,7 @@ import telethon
 from config import API_ID, API_HASH
 
 client = telethon.TelegramClient("pmbot", API_ID, API_HASH)
+client.start()
 memory = {}
 
 @client.on(telethon.events.NewMessage(incoming=True, func=lambda e: e.is_private))
