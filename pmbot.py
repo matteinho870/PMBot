@@ -1,3 +1,4 @@
+
 import telethon
 import logging
 logging.basicConfig(level=logging.WARNING)
@@ -15,9 +16,9 @@ async def start(event):
     if event.from_id == me.id:
         return
     if event.from_id in memory:
-        await event.reply("""Il mio capo sta valutando se risponderti o no. Attendi fino alla sua risposta""")
+        await event.reply("""Ancora non lo capisci? Non ti cago, non ti penso.""")
     else:
-        await event.reply("""Non spammare, il mio capo presto ti risponderà. Attendi fino alla sua risposta.""")
+        await event.reply("""Pezzo di merda, sono offline, non spammare che al ritorno te pijo a colpi di capoccia""")
         memory[event.from_id] = 1
 
 @client.on(telethon.events.NewMessage(pattern=r"\.off", outgoing=True))
